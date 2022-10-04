@@ -1,5 +1,10 @@
 import sys
 import platform
+from math import pi, sin, cos
+
+from direct.showbase.ShowBase import ShowBase
+from direct.task import Task
+from direct.actor.Actor import Actor
 
 print("hello")
 
@@ -25,3 +30,4 @@ class MyApp(ShowBase):
 
 app = MyApp()
 app.run()
+
