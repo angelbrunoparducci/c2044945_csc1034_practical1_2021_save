@@ -1,4 +1,7 @@
+
 panda3d
+
+pip install -r requirements.txt
 
 from direct.showbase.ShowBase import ShowBase
 
