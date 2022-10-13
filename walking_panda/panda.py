@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 
-if __name__ == '__main__':
-    cli()
 from math import pi, sin, cos
 
 from direct.showbase.ShowBase import ShowBase
 from direct.task import Task
 from direct.actor.Actor import Actor
 
+
+def else__():
+    pass
+
+
 class WalkingPanda(ShowBase):
-    def __init__(self,no_rotate=False):
+    def __init__(self,no_rotate, walk):
+
 
         ShowBase.__init__(self)
 
@@ -22,7 +26,10 @@ class WalkingPanda(ShowBase):
         self.scene.setPos(-8, 42, 0)
 
         # Add the spinCameraTask procedure to the task manager.
-        self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
+        if no_rotate == False:
+            print("spin")
+            self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
+        print("load_panda")
 
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
@@ -30,6 +37,7 @@ class WalkingPanda(ShowBase):
         self.pandaActor.setScale(0.005, 0.005, 0.005)
         self.pandaActor.reparentTo(self.render)
         # Loop its animation.
+
         self.pandaActor.loop("walk")
 
     # Define a procedure to move the camera.
