@@ -12,7 +12,7 @@ def else__():
 
 
 class WalkingPanda(ShowBase):
-    def __init__(self,no_rotate, walk):
+    def __init__(self,no_rotate, not_to_render, walk):
 
 
         ShowBase.__init__(self)

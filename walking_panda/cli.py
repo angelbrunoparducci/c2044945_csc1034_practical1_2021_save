@@ -6,7 +6,7 @@ def cli():
     parser = argparse.ArgumentParser(prog="walking_panda")
     parser.add_argument("--no-rotate",help="Suppress Rotation",
                         action="store_true")
-    parser.add_argument("--walk", help="Suppress Rotation",
+    parser.add_argument("--not-to-render", help="Suppress Rendering",
                         action="store_true")
     args = parser.parse_args()
 
