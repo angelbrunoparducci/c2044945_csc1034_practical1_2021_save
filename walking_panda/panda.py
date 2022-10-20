@@ -12,7 +12,7 @@ def else__():
 
 
 class WalkingPanda(ShowBase):
-    def __init__(self,no_rotate, not_to_render, walk):
+    def __init__(self, no_rotate=False,  scale=1, remove_panda=False, stop_walk=False):
 
 
         ShowBase.__init__(self)
@@ -31,16 +31,25 @@ class WalkingPanda(ShowBase):
             self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
         print("load_panda")
 
-        # Load and transform the panda actor.
-        self.pandaActor = Actor("models/panda-model",
-                                {"walk": "models/panda-walk4"})
-        self.pandaActor.setScale(0.005, 0.005, 0.005)
-        self.pandaActor.reparentTo(self.render)
-        # Loop its animation.
+        if remove_panda:
+            ""
+        else:
+            self.pandaActor = Actor("models/panda-model",
+                                    {"walk": "models/panda-walk4"})
+            size = 0.005*scale
+            self.pandaActor.setScale(size, size, size)
+            self.pandaActor.reparentTo(self.render)
+            # Loop its animations
+        if stop_walk:
+            ""
+        else:
+            self.pandaActor.loop("walk")
 
-        self.pandaActor.loop("walk")
+        mySound = self.loader.loadSfx("Sounds/cats.mp3")
+        mySound.play()
 
-    # Define a procedure to move the camera.
+
+    # Define a procedure to move the camera
     def spinCameraTask(self, task):
         angleDegrees = task.time * 6.0
         angleRadians = angleDegrees * (pi / 180.0)
